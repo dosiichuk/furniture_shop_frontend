@@ -19,17 +19,6 @@ class NewFurniture extends React.Component {
       activePage: newPage,
       isFading: true,
     }));
-    if (this.state.isFading === false) {
-      setTimeout(
-        function() {
-          this.setState(prevState => ({
-            ...prevState,
-            isFading: false,
-          }));
-        }.bind(this),
-        500
-      );
-    }
   }
 
   handleCategoryChange(newCategory) {
@@ -78,7 +67,7 @@ class NewFurniture extends React.Component {
     const pagesCount = Math.ceil(categoryProducts.length / this.state.boxNum);
 
     const dots = [];
-    for (let i = 0; i < pagesCount; i++) {
+    for (let i = 0; i < 3; i++) {
       dots.push(
         <li key={i}>
           <a
@@ -141,7 +130,7 @@ class NewFurniture extends React.Component {
             {pages.map((page, index) => (
               <div
                 key={index}
-                className={`row ${isFading ? styles.fadeIn : styles.fadeOut}`}
+                className={`row ${index === activePage ? styles.fadeIn : ''}`}
               >
                 {page}
               </div>

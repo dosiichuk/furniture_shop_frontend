@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faExchangeAlt,
@@ -11,8 +12,25 @@ import {
 import Button from '../../common/Button/Button';
 import styles from './QuickViewModal.module.scss';
 import StarRating from '../StarRating/StarRating';
+import {
+  addComparedProduct,
+  removeComparedProduct,
+} from '../../../redux/comparedProductsRedux';
+import { getAllComparedProducts } from '../../../redux/comparedProductsRedux';
 
 const QuickViewModal = ({ product, show, handleClose }) => {
+  const dispatch = useDispatch();
+  const comparedProducts = useSelector(getAllComparedProducts);
+  const addedForComparison = comparedProducts.find(item => item.id === product.id)
+    ? true
+    : '';
+  const toggleAddedForComparison = () => {
+    if (!addedForComparison) {
+      dispatch(addComparedProduct(product));
+    } else {
+      dispatch(removeComparedProduct(product.id));
+    }
+  };
   if (!show) return null;
   return ReactDOM.createPortal(
     <div className={styles.backdrop} onClick={handleClose}>
@@ -61,6 +79,7 @@ const QuickViewModal = ({ product, show, handleClose }) => {
               <Button
                 variant='small'
                 className={'ml-2 w-40 d-none d-sm-block ' + styles.button}
+                onClick={toggleAddedForComparison}
               >
                 <FontAwesomeIcon icon={faExchangeAlt}></FontAwesomeIcon> COMPARE
               </Button>

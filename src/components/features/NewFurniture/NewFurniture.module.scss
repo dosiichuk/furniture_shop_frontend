@@ -106,13 +106,7 @@
   //TRANSITION
 
   .fadeIn {
-    opacity: 0;
-    transition: opacity 100ms ease-in-out;
-  }
-
-  .fadeOut {
-    opacity: 1;
-    transition: opacity 500ms ease-in-out;
+    animation: fadeIn 1000ms ease-in;
   }
 }
 
@@ -141,7 +135,7 @@
         left: 50%;
         transform: translate(-50%, -100%);
         &::before {
-         display: none;
+          display: none;
         }
       }
       .menu {
@@ -178,7 +172,7 @@
           white-space: nowrap;
         }
         &::before {
-         display: none;
+          display: none;
         }
       }
       .menu {
@@ -205,5 +199,14 @@
         }
       }
     }
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
