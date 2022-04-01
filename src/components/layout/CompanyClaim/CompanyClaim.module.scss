@@ -47,22 +47,6 @@
         }
       }
 
-      .cartCounter {
-        width: 56px;
-        height: 27px;
-        border-radius: 14px;
-        background-color: $header-bg;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 14px;
-        color: $companyClaim-cartCounter-text;
-        position: absolute;
-        top: 50%;
-        right: 0;
-        transform: translate(80%, -50%);
-      }
-
       &:hover {
         .cartIcon {
           @include element-hover-animation(lighten($primary, 10%));
@@ -72,7 +56,7 @@
   }
 }
 
-@media(max-width: 767px) {
+@media (max-width: 767px) {
   .root {
     .logo {
       order: -3;
@@ -80,7 +64,7 @@
     .cart {
       margin-right: 15%;
       order: -2;
-      top: -10px ;
+      top: -10px;
     }
     .phoneNumber {
       margin-right: 3%;
@@ -94,20 +78,20 @@
   }
 }
 
-@media(min-width: 320px) and (max-width: 545px){
+@media (min-width: 320px) and (max-width: 545px) {
   .root {
     .logo {
       order: -3;
       width: 50%;
       top: 5vw;
-      img{
+      img {
         width: 120%;
       }
     }
     .cart {
       margin-right: 15%;
       order: -2;
-      top: 10px ;
+      top: 10px;
     }
     .phoneNumber {
       margin-right: 3%;

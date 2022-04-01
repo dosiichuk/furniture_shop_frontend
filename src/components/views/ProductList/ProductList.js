@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { useParams, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faList, faTable } from '@fortawesome/free-solid-svg-icons';
 import Brands from '../../features/Brands/BrandsContainer';
@@ -9,12 +10,19 @@ import Brands from '../../features/Brands/BrandsContainer';
 import ProductsSelectedByCategory from '../../features/ProductsSelectedByCategory/ProductSelectedByCategory';
 import styles from './ProductList.module.scss';
 
-const ProductList = () => {
+const ProductList = props => {
   const [layout, setLayout] = useState('grid');
+
   const { categoryId } = useParams();
+  const search = useLocation().search;
+  let searchTerm = categoryId;
   if (!categoryId) {
+    searchTerm = new URLSearchParams(search).get('search');
+  }
+  if (!searchTerm) {
     return <div>Category not found</div>;
   }
+
   return (
     <div className={styles.root}>
       <div className='container'>
@@ -38,7 +46,7 @@ const ProductList = () => {
           <div className='col-lg-9'>
             <div className='row d-flex flex-row justify-content-between align-items-center py-3'>
               <div className='col-4'>
-                <h3 className='m-0'>{categoryId.toUpperCase()}</h3>
+                <h3 className='m-0'>{searchTerm.toUpperCase()}</h3>
               </div>
               <div className={styles.switch}>
                 <button
@@ -67,7 +75,7 @@ const ProductList = () => {
               </div>
             </div>
             <div className={styles.productsContainer}>
-              <ProductsSelectedByCategory category={categoryId} layout={layout} />
+              <ProductsSelectedByCategory searchTerm={searchTerm} layout={layout} />
             </div>
           </div>
           <div className='col-lg-3'>
@@ -81,6 +89,8 @@ const ProductList = () => {
     </div>
   );
 };
-// ProductList.propTypes = {};
+ProductList.propTypes = {
+  listByCategory: PropTypes.bool,
+};
 
 export default ProductList;

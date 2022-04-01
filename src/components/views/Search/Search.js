@@ -4,9 +4,11 @@ import React from 'react';
 import styles from './Search.module.scss';
 
 import NewFurniture from '../../features/NewFurniture/NewFurnitureContainer';
+import ProductList from '../ProductList/ProductList';
 
 const Search = () => (
   <div className={styles.root}>
+    <ProductList />
     <NewFurniture />
   </div>
 );

@@ -7,6 +7,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMobileAlt, faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
+import CartCounter from '../../features/CartCounter/CartCounter';
+
 const CompanyClaim = () => (
   <div className={styles.root}>
     <div className='container'>
@@ -29,7 +31,7 @@ const CompanyClaim = () => (
                 <FontAwesomeIcon className={styles.icon} icon={faShoppingBasket} />
               </div>
             </Link>
-            <div className={styles.cartCounter}>99999</div>
+            <CartCounter />
           </a>
         </div>
       </div>

@@ -12,12 +12,30 @@
     align-items: center;
     justify-items: center;
 
-    ul {
+    .dropdown {
+      width: 100%;
       padding: 15px 0 0 0;
       text-align: center;
       list-style-type: none;
       z-index: 2;
       white-space: nowrap;
+
+      .options {
+        width: 100%;
+        padding: 30px 0 0 0;
+        text-align: center;
+        list-style-type: none;
+        z-index: 2;
+        white-space: nowrap;
+        display: flex;
+        flex-direction: column;
+        display: none;
+      }
+
+      &:hover .options {
+        display: flex;
+        flex-direction: column;
+      }
 
       .icon {
         margin: 0 5px;
@@ -47,16 +65,12 @@
       transform: translate(-50%, -8%);
       z-index: 1;
 
-     li {
+      li {
         border: 1px solid $form-border-color;
         display: block;
         padding: 0 ($base-padding);
         background-color: #ffffff;
       }
-    }
-
-    li:hover ul {
-      display: block;
     }
 
     li ul a {
@@ -82,11 +96,11 @@
   }
 
   .category:hover {
-  background: $primary;
-  .icon {
-    color: #ffffff;
+    background: $primary;
+    .icon {
+      color: #ffffff;
+    }
   }
-}
 
   .searchField {
     display: flex;
@@ -111,17 +125,17 @@
     }
 
     a {
-       color: black;
-     }
+      color: black;
+    }
   }
 }
 
-@media(min-width: 350px) and (max-width: 578px){
+@media (min-width: 350px) and (max-width: 578px) {
   .root {
     height: 54px;
     .searchField {
       width: 275px;
-      padding-right:0px;
+      padding-right: 0px;
       input {
         width: auto;
       }
@@ -140,7 +154,7 @@
     height: 54px;
     .searchField {
       width: 190px;
-      padding-right:0px;
+      padding-right: 0px;
       input {
         width: auto;
       }
