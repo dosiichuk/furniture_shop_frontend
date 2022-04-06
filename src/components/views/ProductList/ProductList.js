@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams, useLocation, Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faList, faTable } from '@fortawesome/free-solid-svg-icons';
 import Brands from '../../features/Brands/BrandsContainer';
@@ -35,7 +35,7 @@ const ProductList = props => {
           </p>
         </div>
         <div className={styles.navBar}>
-          <a href='/'>Home</a>
+          <Link to='/'>Home</Link>
           <p>
             &gt;<span>Furniture</span>
           </p>
